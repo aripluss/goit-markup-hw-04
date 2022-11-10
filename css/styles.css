@@ -350,15 +350,17 @@ img {
 }
 
 .customers-icons .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 92px;
   border: 1px solid #afb1b8;
   border-radius: 4px;
 }
 
 .customer-icon {
   display: block;
-  width: 170px;
-  height: 92px;
-
   fill: var(--icons-fill-color);
 }
 
@@ -512,7 +514,7 @@ img {
   padding: 20px 24px;
   border: 1px solid var(--portfolio-border-color);
   border-top: none;
-  
+
   background-color: var(--primary-white-color);
 }
 
