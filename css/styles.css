@@ -9,6 +9,7 @@
   --hero-button-bg-activ: #188ce8;
   --header-border-bottom-color: #ececec;
   --portfolio-border-color: #eeeeee;
+  --icons-fill-color: #afb1b8;
 }
 
 body {
@@ -39,7 +40,41 @@ img {
   margin-right: auto;
 }
 
-/* Page header */
+/* Sections */
+
+.section {
+  padding-top: 94px;
+  padding-bottom: 94px;
+}
+
+.section.no-toppadding {
+  padding-top: 0;
+  padding-bottom: 94px;
+}
+
+.section-title {
+  margin-top: 0;
+  margin-bottom: 50px;
+
+  font-size: 36px;
+  line-height: 1.17;
+  text-align: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+/* -------------------- Page header -------------------- */
 
 .logo {
   color: var(--accent-color);
@@ -103,14 +138,12 @@ img {
 .contacts-nav {
   display: flex;
   margin-left: auto;
-}
-
-.contacts-nav .item:not(:last-child) {
-  margin-right: 50px;
+  gap: 30px;
 }
 
 .contacts-nav .link {
-  display: block;
+  display: flex;
+  align-items: center;
   padding-top: 32px;
   padding-bottom: 32px;
 
@@ -119,22 +152,33 @@ img {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
-
   text-decoration: none;
 }
 
 .contacts-nav .link:hover,
-.contacts-nav .link:focus {
+.contacts-nav .link:focus,
+.contacts-nav .icon:hover,
+.contacts-nav .icon:focus {
   color: var(--accent-color);
 }
 
-/* Стилі для index.html */
+.contacts-nav .icon {
+  fill: currentColor;
+  margin-right: 10px;
+}
 
-/* Hero */
+/* -------------------- Hero -------------------- */
 
 .hero {
-  padding: 200px 0;
   background-color: var(--secondary-bg-color);
+  padding: 200px 0;
+  max-width: 1600px;
+  margin: 0 auto;
+  background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+    url('../images/hero.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .hero .container {
@@ -173,53 +217,30 @@ img {
 .hero-button:hover,
 .hero-button:focus {
   background-color: var(--hero-button-bg-activ);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Section */
-
-.section {
-  padding-top: 94px;
-  padding-bottom: 94px;
-}
-
-.section.no-toppadding {
-  padding-top: 0;
-  padding-bottom: 94px;
-}
-
-.section-title {
-  margin-top: 0;
-  margin-bottom: 50px;
-
-  font-size: 36px;
-  line-height: 1.17;
-  text-align: center;
-}
-
-.visually-hidden {
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  margin: -1px;
-}
-/* Features */
+/* -------------------- Features -------------------- */
 
 .features.list {
   display: flex;
+  justify-content: space-between;
 }
 
-.features.list .item {
+.features.list .card {
   width: 270px;
 }
 
-.features.list .item:not(:last-child) {
-  margin-right: 30px;
+.features-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 270px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+
+  background-color: var(--primary-bg-color);
 }
 
 .features-title {
@@ -239,17 +260,14 @@ img {
   line-height: 1.71;
 }
 
-/* What we do */
+/* -------------------- What we do -------------------- */
 
 .what-we-do.list {
   display: flex;
+  gap: 30px;
 }
 
-.what-we-do .item:not(:last-child) {
-  margin-right: 30px;
-}
-
-/* Team */
+/* -------------------- Team -------------------- */
 
 .section.team {
   background-color: var(--primary-bg-color);
@@ -257,20 +275,17 @@ img {
 
 .team.list {
   display: flex;
-}
-
-.team-member:not(:last-child) {
-  margin-right: 30px;
+  gap: 30px;
 }
 
 .team-member .content {
+  text-align: center;
   padding: 30px;
   border-radius: 0px 0px 4px 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
   background-color: var(--primary-white-color);
-  text-align: center;
 }
 
 .team-title {
@@ -284,31 +299,78 @@ img {
 
 .team-item {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 16px;
 
   color: var(--secondary-text-color);
   font-size: 16px;
   line-height: 1.19;
 }
 
-/* Customers */
+/* Social networks icons */
 
-.customers-icons {
+.social-networks {
   display: flex;
   justify-content: center;
+  gap: 10px;
 }
 
-.customer-icon:not(:last-child) {
-  margin-right: 30px;
+.social-networks .item {
+  height: 44px;
+  width: 44px;
+}
+
+.social-networks .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.social-networks .link:hover,
+.social-networks .link:focus {
+  background-color: var(--accent-color);
+}
+
+.social-networks .icon {
+  fill: var(--icons-fill-color);
+}
+
+.social-networks .link:hover .icon {
+  fill: var(--primary-white-color);
+}
+
+/* -------------------- Customers -------------------- */
+
+.customers-icons.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.customers-icons .item {
+  border: 1px solid #afb1b8;
+  border-radius: 4px;
 }
 
 .customer-icon {
+  display: block;
   width: 170px;
   height: 92px;
-  outline: 1px solid red;
+
+  fill: var(--icons-fill-color);
 }
 
-/* Footer */
+.customers-icons .item:hover {
+  border: 1px solid var(--accent-color);
+}
+
+.customers-icons .item:hover .customer-icon {
+  fill: var(--accent-color);
+}
+
+/* -------------------- Footer -------------------- */
 
 .page-footer {
   padding-top: 60px;
@@ -346,7 +408,45 @@ img {
   text-decoration: none;
 }
 
-/* Стилі для portfolio.html */
+.page-footer .container {
+  display: flex;
+}
+
+.contacts {
+  margin-right: 94px;
+}
+
+.footer-social-networks {
+  padding-top: 12px;
+}
+.appeal {
+  display: block;
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primary-white-color);
+}
+
+.footer-social-networks .link {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-social-networks .link:hover,
+.footer-social-networks .link:focus {
+  background-color: var(--accent-color);
+}
+
+.footer-social-networks .icon {
+  fill: var(--primary-white-color);
+}
+
+/* -------------------- portfolio.html -------------------- */
+
+/* Filter buttons */
 
 .section.projects {
   padding-top: 105px;
@@ -383,9 +483,11 @@ img {
 .filters .button:focus {
   color: var(--primary-white-color);
   background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-/* Portfolio */
+/* Projects */
 
 .portfolio.list {
   display: flex;
@@ -408,9 +510,9 @@ img {
 
 .portfolio .content {
   padding: 20px 24px;
-
   border: 1px solid var(--portfolio-border-color);
   border-top: none;
+  
   background-color: var(--primary-white-color);
 }
 
@@ -430,4 +532,9 @@ img {
   color: var(--secondary-text-color);
   font-size: 16px;
   line-height: 1.88;
+}
+
+.portfolio .card:hover {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
